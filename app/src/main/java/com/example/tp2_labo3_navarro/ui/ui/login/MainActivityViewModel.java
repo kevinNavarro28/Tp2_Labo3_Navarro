@@ -2,6 +2,7 @@ package com.example.tp2_labo3_navarro.ui.ui.login;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.tp2_labo3_navarro.Modelo.Usuario;
 import com.example.tp2_labo3_navarro.request.ApiClient;
+import com.example.tp2_labo3_navarro.ui.ui.Registro.RegistroActivity;
 
 public class MainActivityViewModel extends AndroidViewModel {
     private Context context;
@@ -37,6 +39,10 @@ public class MainActivityViewModel extends AndroidViewModel {
         Usuario usuario = apiClient.loginUsuario(context,mail,clave);
         if(usuario !=null){
           usuarioM.setValue(usuario);
+            Intent intent = new Intent(context, RegistroActivity.class);
+
+            intent.putExtra("usuario", usuario);
+            context.startActivity(intent);
         }
         else {
             Toast.makeText(context,"Ingrese valores correctos",Toast.LENGTH_LONG).show();

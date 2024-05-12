@@ -11,12 +11,15 @@ public class Usuario implements Serializable {
 
 
 
+
+
     public Usuario(String nombre, String apellido, long dni, String mail, String clave) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.mail = mail;
         this.clave = clave;
+
     }
 
     public Usuario(){

@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private MainActivityViewModel mv;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
         mv.getUsuarioM().observe(this, new Observer<Usuario>() {
             @Override
-            public void onChanged(Usuario usuario) {
+            public void onChanged(Usuario usuario)
+            {
                 Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
-                //putExtra("usuario", usuario)
-                intent.putExtra("usuario", usuario);
+                intent.putExtra("formulario_vacio",false);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
+                intent.putExtra("formulario_vacio",true);
                 startActivity(intent);
             }
         });
